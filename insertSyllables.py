@@ -10,7 +10,7 @@ onsetMap = {"k": "ಕ", "kh": "ಖ", "g": "ಗ", "gh": "ಘ", "c": "ಚ", "ch": 
 vowelDiacriticMap = {"aa": "ಾ", "i": "ಿ", "ii": "ೀ", "u": "ು", "uu": "ೂ", "R": "ೃ", "e": "ೆ", "ee": "ೇ", "o": "ೊ",
                      "oo": "ೋ", "ai": "ೈ", "au": "ೌ"}
 
-vowelMap = {"aa": "ಆ", "i": "ಇ", "ii": "ಈ", "u": "ಉ", "uu": "ಊ", "R": "ಋ", "e": "ಎ", "ee": "ಏ", "o": "ಒ",
+vowelMap = {"a": "ಅ", "aa": "ಆ", "i": "ಇ", "ii": "ಈ", "u": "ಉ", "uu": "ಊ", "R": "ಋ", "e": "ಎ", "ee": "ಏ", "o": "ಒ",
             "oo": "ಓ", "ai": "ಐ", "au": "ಔ"}
 
 codaMap = {"M": "ಂ", "H": "ಃ"}
@@ -43,13 +43,13 @@ syllableMap = construct_syllable_map(onsetMap, vowelDiacriticMap)
 deadConsonantMap = construct_dead_consonant_map(onsetMap)
 
 for insertableSyllable in syllableMap:
-    trieObject.insert(insertableSyllable)
+    trieObject.insert(insertableSyllable, syllableMap[insertableSyllable])
 
 for insertableDeadConsonant in deadConsonantMap:
-    trieObject.insert(insertableDeadConsonant)
+    trieObject.insert(insertableDeadConsonant, deadConsonantMap[insertableDeadConsonant])
 
 for insertableVowel in vowelMap:
-    trieObject.insert(insertableVowel)
+    trieObject.insert(insertableVowel, vowelMap[insertableVowel])
 
 for insertableCoda in codaMap:
-    trieObject.insert(insertableCoda)
+    trieObject.insert(insertableCoda, codaMap[insertableCoda])
