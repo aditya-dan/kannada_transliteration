@@ -15,29 +15,17 @@ class Trie:
         current.isLeaf = True
         current.mapping = mapping
 
-    def search(self, word: str) -> bool:
+    def process(self, word: str):
         current = self.root
+        length = len(word)
+        pointer = 0
 
-        for character in word:
+        while pointer < length:
+            character = word[pointer]
             if character not in current.children:
-                return False
+                print(current.mapping, end="")
+                self.process(word[pointer:])
+                return
             current = current.children[character]
-        return current.isLeaf
-
-    def starts_with(self, prefix: str) -> bool:
-        current = self.root
-
-        for character in prefix:
-            if character not in current.children:
-                return False
-            current = current.children[character]
-        return True
-
-    def return_map(self, word: str) -> str:
-        current = self.root
-
-        for character in word:
-            if character not in current.children:
-                return ""
-            current = current.children[character]
-        return current.mapping
+            pointer += 1
+        print(current.mapping)
