@@ -1,4 +1,5 @@
 from trieNode import *
+from symbolMaps import latinCharacterSet
 
 
 class Trie:
@@ -18,14 +19,16 @@ class Trie:
     def process(self, word: str):
         current = self.root
         length = len(word)
-        pointer = 0
 
-        while pointer < length:
-            character = word[pointer]
-            if character not in current.children:
+        for counter in range(0, length):
+            character = word[counter]
+            if character in current.children:
+                current = current.children[character]
+            else:
                 print(current.mapping, end="")
-                self.process(word[pointer:])
+                if character in latinCharacterSet:
+                    self.process(word[counter:])
+                else:
+                    self.process(word[counter+1:])
                 return
-            current = current.children[character]
-            pointer += 1
         print(current.mapping)

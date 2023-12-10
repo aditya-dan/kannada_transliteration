@@ -10,3 +10,5 @@ vowelMap = {"a": "ಅ", "aa": "ಆ", "i": "ಇ", "ii": "ಈ", "u": "ಉ", "uu": 
             "oo": "ಓ", "ai": "ಐ", "au": "ಔ"}
 
 codaMap = {"M": "ಂ", "H": "ಃ"}
+
+latinCharacterSet = "abcdDeghHijklmMnoprRsStTuvy"
