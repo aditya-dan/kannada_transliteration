@@ -1,26 +1,27 @@
 import re
 
 consonant = "[bcdfghjklmnprstvwyz]"
+vowel = "[aeiou]"
 
 regexTransformationMap = {
-    "aa": "aa?",
-    "ii": "ii?|ee",
-    "uu": "uu?|oo",
-    "R": "ru",
-    "e": "e|^ye",
-    "ee": "e|^ye",
-    "o": "o|^wo",
-    "oo": "o|^wo",
-    "ai": "ai|y",
-    "au": "ai|ow",
-    "M": "[nm]",
-    "H": "ha?"
+    "aa": f"((?<={consonant})|^)aa?(?={consonant}|$)",
+    "ii": f"((?<={consonant})|^)(ii?|ee)(?={consonant}|$)",
+    "uu": f"((?<={consonant})|^)(uu?|oo)(?={consonant}|$)",
+    "R": f"((?<={consonant})|^)ru(?={consonant}|$)",
+    "e": f"(((?<={consonant})|^)e|^ye)(?={consonant}|$)",
+    "ee": f"(((?<={consonant})|^)e|^ye)(?={consonant}|$)",
+    "o": f"(((?<={consonant})|^)o|^wo)(?={consonant}|$)",
+    "oo": f"(((?<={consonant})|^)o|^wo)(?={consonant}|$)",
+    "ai": f"(((?<={consonant})|^)ai|(?<={consonant})y)(?={consonant}|$)",
+    "au": f"(((?<={consonant})|^)au|(?<={consonant})ow)(?={consonant}|$)",
+    "M": f"(?<={vowel})[nm](?={consonant}|$)",
+    "H": f"(?<={vowel})ha?(?={consonant}|$)"
 }
 
 inputWord = input("Enter word: ")
 
 for normalisedForm in regexTransformationMap:
     regex = regexTransformationMap[normalisedForm]
-    if re.search(regex, normalisedForm):
-        normalisedInput = re.sub(regex, normalisedForm, inputWord)
-        print(normalisedInput)
+    search_result = re.search(regex, inputWord)
+    if search_result:
+        print(normalisedForm + ": " + str(search_result))
