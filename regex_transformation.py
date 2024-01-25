@@ -18,7 +18,7 @@ regexTransformationMap = {
     "H": f"(?<={vowel})ha?(?={consonant}|$)",
 
     "k": f"[ck](?=[^h])",
-    "c": f"ch?(?<=[^h])",
+    "c": f"ch?(?=[^h])",
     "ch": f"chh?",
     "jn": f"((?<={vowel})|^)(gy|jn)(?={vowel})",
     "T": f"t(?=[^h])",
