@@ -15,7 +15,23 @@ regexTransformationMap = {
     "ai": f"(((?<={consonant})|^)ai|(?<={consonant})y)(?={consonant}|$)",
     "au": f"(((?<={consonant})|^)au|(?<={consonant})ow)(?={consonant}|$)",
     "M": f"(?<={vowel})[nm](?={consonant}|$)",
-    "H": f"(?<={vowel})ha?(?={consonant}|$)"
+    "H": f"(?<={vowel})ha?(?={consonant}|$)",
+
+    "k": f"[ck](?=[^h])",
+    "c": f"ch?(?<=[^h])",
+    "ch": f"chh?",
+    "jn": f"((?<={vowel})|^)(gy|jn)(?={vowel})",
+    "T": f"t(?=[^h])",
+    "D": f"d(?=[^h])",
+    "Th": f"th",
+    "Dh": f"dh",
+    "N": f"n",
+    "t": f"th?",
+    "d": f"dh?",
+    "ph": f"f|ph",
+    "v": f"v|w",
+    "S": f"sh",
+    "L": f"l"
 }
 
 inputWord = input("Enter word: ")
